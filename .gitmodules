@@ -1,0 +1,3 @@
+[submodule "lib/CANOpenNode-ESP32"]
+	path = lib/CANOpenNode-ESP32
+	url = https://github.com/zylos146/CANOpenNode-ESP32
