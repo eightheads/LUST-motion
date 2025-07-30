@@ -20,13 +20,6 @@
 #include <genericStepper.h>
 #include <OSSMRefBoardV2.h>
 
-#ifdef OSSM_REF
-#include <OSSMReferenceBoard.h>
-// else throw compile error
-#else
-#error "No board defined"
-#endif
-
 #ifndef MOTION_FACTORY_TRAVEL
 #define MOTION_FACTORY_TRAVEL 150.0
 #endif
