@@ -18,10 +18,11 @@
 #include <StrokeEngineEnvironmentService.h>
 #include <StrokeEngineSafetyService.h>
 #include <SafeStateService.h>
+#include <service/SerialStateService.hpp>
 #include <RawDataStreaming.h>
 #include <StatusMonitor.h>
 
-#define SERIAL_BAUD_RATE 115200
+#define CONSOLE_BAUD_RATE 115200
 
 /*#################################################################################################
 ##
@@ -61,6 +62,8 @@ StrokeEngineEnvironmentService strokeEngineEnvironmentService = StrokeEngineEnvi
                                                                                                &motorConfigurationService,
                                                                                                &strokeEngineSafetyService,
                                                                                                &mqttBrokerSettingsService);
+                                                                                              
+SerialStateService serialState(&server, esp32sveltekit.getSecurityManager(), esp32sveltekit.getFS());
 
 DataStreamer dataStream = DataStreamer(&esp32sveltekit, &Stroker);
 
@@ -107,7 +110,7 @@ StatusMonitor statusMonitor = StatusMonitor(&esp32sveltekit);
 void setup()
 {
     // start serial communication
-    Serial.begin(SERIAL_BAUD_RATE);
+    Serial.begin(CONSOLE_BAUD_RATE);
 
     // start ESP32-SvelteKit
     esp32sveltekit.begin();
@@ -143,6 +146,7 @@ void setup()
     // Add loop callbacks to ESP32-SvelteKit
     esp32sveltekit.addLoopFunction([]()
                                    { statusMonitor.loop(); });
+    serialState.begin(); // TODO - Activate only on LinMot variants (For space reasons)
 }
 
 void loop()
