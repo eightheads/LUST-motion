@@ -12,7 +12,7 @@
 #ifndef STROKE_ENGINE_H
 #define STROKE_ENGINE_H
 
-#include <PatternLib.h>
+#include <Pattern.h>
 #include <StrokeEngineMotor.h>
 #include <StrokeEngineSafeGuard.h>
 #include <StrokeEngineTrapezoidalMotion.h>
@@ -139,9 +139,9 @@ typedef std::function<void(bool safestate)> StrokeEngineSafeStateCallback;
 class StrokeEngine
 {
 public:
-    static Pattern *patternTable;
-    static const u8_t patternTableSize;
-    static void registerPatterns(Pattern *patternTable, u8_t patternCount) {
+    inline static Pattern** patternTable;
+    inline static u8_t patternTableSize;
+    static void registerPatterns(Pattern** patternTable, u8_t patternCount) {
         StrokeEngine::patternTable = patternTable;
         StrokeEngine::patternTableSize = patternCount;
     }

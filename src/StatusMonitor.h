@@ -12,7 +12,6 @@
 
 #include <ESP32SvelteKit.h>
 #include <Arduino.h>
-#include <OSSMReferenceBoard.h>
 #include <FastLED.h>
 
 #define smTAG "StatusMonitor"

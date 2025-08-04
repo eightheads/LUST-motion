@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <StrokeEngine.h>
-#include <PatternLib.h>
+#include <Pattern.h>
 
 void StrokeEngine::attachMotor(MotorInterface *motor)
 {
@@ -258,15 +258,15 @@ void StrokeEngine::applyChangesNow()
 // WARNING: This function must be called only within the scope of a Taken _parameterMutex
 void StrokeEngine::_sendParametersToPattern(int patternIndex)
 {
-    patternTable[patternIndex]->setTimeOfStroke(_safeGuard.getTimeOfStroke());
-    patternTable[patternIndex]->setStroke(_safeGuard.getCurrentStroke());
-    patternTable[patternIndex]->setSensation(_sensation);
+    StrokeEngine::patternTable[patternIndex]->setTimeOfStroke(_safeGuard.getTimeOfStroke());
+    StrokeEngine::patternTable[patternIndex]->setStroke(_safeGuard.getCurrentStroke());
+    StrokeEngine::patternTable[patternIndex]->setSensation(_sensation);
 }
 
 bool StrokeEngine::setPattern(int patternIndex, bool applyNow)
 {
     // Check wether pattern Index is in range
-    if ((patternIndex < patternTableSize) && (patternIndex >= 0))
+    if ((patternIndex < StrokeEngine::patternTableSize) && (patternIndex >= 0))
     {
         if (xSemaphoreTake(_parameterMutex, portMAX_DELAY) == pdTRUE)
         {
@@ -291,9 +291,9 @@ bool StrokeEngine::setPattern(int patternIndex, bool applyNow)
 bool StrokeEngine::setPattern(String patternName, bool applyNow)
 {
     ESP_LOGD("StrokeEngine", "Select pattern by string: %s", patternName);
-    for (size_t i = 0; i < patternTableSize; i++)
+    for (size_t i = 0; i < StrokeEngine::patternTableSize; i++)
     {
-        if (strcmp(patternTable[i]->getName(), patternName.c_str()) == 0)
+        if (strcmp(StrokeEngine::patternTable[i]->getName(), patternName.c_str()) == 0)
         {
             setPattern(i, applyNow);
             return true;
@@ -312,14 +312,14 @@ int StrokeEngine::getCurrentPattern()
 
 String StrokeEngine::getCurrentPatternName()
 {
-    return String(patternTable[_patternIndex]->getName());
+    return String(StrokeEngine::patternTable[_patternIndex]->getName());
 }
 
 String StrokeEngine::getPatternName(int index)
 {
-    if (index >= 0 && index <= patternTableSize)
+    if (index >= 0 && index <= StrokeEngine::patternTableSize)
     {
-        return String(patternTable[index]->getName());
+        return String(StrokeEngine::patternTable[index]->getName());
     }
     else
     {
@@ -406,7 +406,7 @@ void StrokeEngine::_updateFixedPosition()
 
 void StrokeEngine::_startPattern()
 {
-    Pattern *pattern = patternTable[_patternIndex];
+    Pattern *pattern = StrokeEngine::patternTable[_patternIndex];
     ESP_LOGI("StrokeEngine", "Starting pattern %s", pattern->getName());
 
     // Stop current move, should one be pending (moveToMax or moveToMin)
@@ -493,13 +493,13 @@ void StrokeEngine::_stroking()
             // Check if Ease-In is required and update pattern with latest stroke value
             needsEaseIn = _safeGuard.calculateEaseIn();
             if (needsEaseIn)
-                patternTable[_patternIndex]->setStroke(_safeGuard.getCurrentStroke());
+                StrokeEngine::patternTable[_patternIndex]->setStroke(_safeGuard.getCurrentStroke());
 
             // Check if an in-motion update is required
             if ((_applyUpdate == true || needsEaseIn == true) && _motor->motionCompleted() == false)
             {
                 // Ask pattern for update on motion parameters
-                currentMotion = patternTable[_patternIndex]->nextTarget(_index);
+                currentMotion = StrokeEngine::patternTable[_patternIndex]->nextTarget(_index);
                 ESP_LOGD("StrokeEngine", "Raw Pattern Values (UPDATE): %d @ %05.1f mm %05.1f mm/s and %05.1f mm/s^2 %s", _index, currentMotion.stroke, currentMotion.speed, currentMotion.acceleration, (currentMotion.skip ? "SKIP" : ""));
 
                 // Run safety system on new motion parameters
@@ -521,7 +521,7 @@ void StrokeEngine::_stroking()
                 _index++;
 
                 // Query new set of pattern parameters
-                currentMotion = patternTable[_patternIndex]->nextTarget(_index);
+                currentMotion = StrokeEngine::patternTable[_patternIndex]->nextTarget(_index);
                 ESP_LOGD("StrokeEngine", "Raw Pattern Values (AT_TARGET): %d @ %05.1f mm %05.1f mm/s and %05.1f mm/s^2 %s", _index, currentMotion.stroke, currentMotion.speed, currentMotion.acceleration, (currentMotion.skip ? "SKIP" : ""));
 
                 // Pattern may introduce pauses between strokes

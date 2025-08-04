@@ -144,11 +144,4 @@ protected:
 */
 /**************************************************************************/
 
-extern "C"
-{
-    static Pattern *patternTable[32];
-
-    static const unsigned int patternTableSize = sizeof(patternTable) / sizeof(patternTable[0]);
-}
-
 #endif // PATTERN_H

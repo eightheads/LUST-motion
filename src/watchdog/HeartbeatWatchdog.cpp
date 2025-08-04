@@ -7,7 +7,7 @@
  *   the terms of the MIT license. See the LICENSE file for details.
  **/
 
-#include <HeartbeatWatchdog.h>
+#include <watchdog/HeartbeatWatchdog.h>
 
 HeartbeatWatchdog::HeartbeatWatchdog(uint32_t interval) : _heartbeatInterval(interval),
                                                           _mode(WATCHDOG_MODE_NONE),

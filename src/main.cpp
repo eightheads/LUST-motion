@@ -15,7 +15,8 @@
 #include <StrokeEngine.h>
 #include <StatusMonitor.h>
 
-#include <services.hpp>
+#include <main_patterns.hpp>
+#include <main_services.hpp>
 
 void setup()
 {
@@ -33,7 +34,7 @@ void setup()
     MDNS.addServiceTxt("LUST-Service", "tcp", "Service", "LUST-motion");
 
     // StrokeEngine Startup
-    StrokeEngine.registerPatterns(patternTable, std::size(patternTable));
+    StrokeEngine::registerPatterns(patternTable, std::size(patternTable));
 
     // Sveltekit Service Startup
     motorConfigurationService.begin();
@@ -42,7 +43,7 @@ void setup()
     strokeEngineSafetyService.begin();
     strokeEngineEnvironmentService.begin();
     safeStateService.begin();
-    serialState.begin(); // TODO - Activate only on LinMot variants (For space reasons)
+    //serialState.begin(); // TODO - Activate only on LinMot variants (For space reasons)
 
     // Sveltekit Monitor / Streaming Startup
     esp32sveltekit.addLoopFunction([]() { statusMonitor.loop(); });

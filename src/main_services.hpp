@@ -2,14 +2,15 @@
 #include <ESP32SvelteKit.h>
 #include <PsychicHttpServer.h>
 #include <StrokeEngine.h>
-#include <MqttBrokerSettingsService.h>
-#include <StrokeEngineControlService.h>
-#include <MotorConfigurationService.h>
-#include <StrokeEngineEnvironmentService.h>
-#include <StrokeEngineSafetyService.h>
-#include <SafeStateService.h>
-#include <service/SerialStateService.hpp>
-#include <RawDataStreaming.h>
+
+#include <service/MqttBrokerSettingsService.h>
+#include <service/StrokeEngineControlService.h>
+#include <service/MotorConfigurationService.h>
+#include <service/StrokeEngineEnvironmentService.h>
+#include <service/StrokeEngineSafetyService.h>
+#include <service/SafeStateService.h>
+//#include <service/SerialStateService.hpp>
+#include <service/RawDataStreaming.h> // TODO - This is not a service?
 #include <StatusMonitor.h>
 
 
@@ -57,12 +58,14 @@ StrokeEngineEnvironmentService strokeEngineEnvironmentService(
     &strokeEngineSafetyService,
     &mqttBrokerSettingsService
   );
-                                                                                              
+
+/* requires AsyncTCP to be restored                                                                                          
 SerialStateService serialState(
     &server, 
     esp32sveltekit.getSecurityManager(), 
     esp32sveltekit.getFS()
   );
+*/
 
 DataStreamer dataStream = DataStreamer(&esp32sveltekit, &Stroker);
 StatusMonitor statusMonitor = StatusMonitor(&esp32sveltekit);
