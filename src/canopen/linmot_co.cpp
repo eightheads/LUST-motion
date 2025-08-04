@@ -1,4 +1,4 @@
-#include "motor/linmot.hpp"
+#include "canopen/linmot.hpp"
 #include "esp_log.h"
 
 ODR_t track_status_update(

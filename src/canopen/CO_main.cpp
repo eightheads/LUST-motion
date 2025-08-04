@@ -3,7 +3,7 @@
 #include "freertos/task.h"
 
 #include "CO_main.h"
-#include "motor.hpp"
+#include "StrokeEngineMotor.h"
 
 #include "esp_log.h"
 

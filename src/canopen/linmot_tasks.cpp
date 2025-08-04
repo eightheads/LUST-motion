@@ -7,7 +7,7 @@
 
 
 
-#include "motor/linmot.hpp"
+#include "canopen/linmot.hpp"
 
 //#include "blynk.hpp"
 

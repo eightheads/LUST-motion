@@ -1,4 +1,4 @@
-#include "motor/linmot.hpp"
+#include "canopen/linmot.hpp"
 #include "esp_log.h"
 
 void LinmotMotor::unsafeGoToPos(MachinePosition position, float speed, float acceleration) {

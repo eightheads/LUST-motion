@@ -25,7 +25,8 @@
     "variant": "esp32s3"
   },
   "connectivity": [
-    "wifi"
+    "wifi",
+    "bluetooth"
   ],
   "debug": {
     "default_tool": "esp-builtin",

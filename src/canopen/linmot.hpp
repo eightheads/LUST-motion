@@ -4,7 +4,7 @@
 #include <time.h>
 
 #include "CANopen.h"
-#include "motor.hpp"
+#include "StrokeEngineMotor.h"
 
 #define LINMOT_CONTROL_SWITCH_ON ((uint16_t)(1 << 0))
 #define LINMOT_CONTROL_ERROR_ACKNOWLEDGE ((uint16_t)(1 << 7))
