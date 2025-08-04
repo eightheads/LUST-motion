@@ -7,7 +7,7 @@
  *   the terms of the MIT license. See the LICENSE file for details.
  **/
 
-#include <StrokeEngineEnvironmentService.h>
+#include <service/StrokeEngineEnvironmentService.h>
 
 StrokeEngineEnvironmentService::StrokeEngineEnvironmentService(StrokeEngine *strokeEngine,
                                                                ESP32SvelteKit *sveltekit,

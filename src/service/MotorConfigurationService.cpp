@@ -7,7 +7,7 @@
  *   the terms of the MIT license. See the LICENSE file for details.
  **/
 
-#include <MotorConfigurationService.h>
+#include <service/MotorConfigurationService.h>
 
 MotorConfigurationService::MotorConfigurationService(StrokeEngine *strokeEngine, ESP32SvelteKit *sveltekit) : _strokeEngine(strokeEngine),
                                                                                                               _httpEndpoint(MotorConfiguration::read,

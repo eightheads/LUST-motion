@@ -5,7 +5,7 @@
  *   the terms of the MIT license. See the LICENSE file for details.
  **/
 
-#include <SafeStateService.h>
+#include <service/SafeStateService.h>
 
 SafeStateService::SafeStateService(StrokeEngine *StrokeEngine,
                                    PsychicHttpServer *server,

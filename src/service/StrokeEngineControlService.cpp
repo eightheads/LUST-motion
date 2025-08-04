@@ -12,7 +12,7 @@
  *   the terms of the LGPL v3 license. See the LICENSE file for details.
  **/
 
-#include <StrokeEngineControlService.h>
+#include <service/StrokeEngineControlService.h>
 
 StrokeEngineControlService::StrokeEngineControlService(StrokeEngine *strokeEngine,
                                                        ESP32SvelteKit *sveltekit,

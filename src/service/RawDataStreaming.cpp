@@ -12,7 +12,7 @@
  *
  **/
 
-#include <RawDataStreaming.h>
+#include <service/RawDataStreaming.h>
 
 DataStreamer::DataStreamer(ESP32SvelteKit *esp32sveltekit, StrokeEngine *stroker) : _socket(esp32sveltekit->getSocket()),
                                                                                     _stroker(stroker)

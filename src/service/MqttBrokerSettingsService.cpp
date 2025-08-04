@@ -12,7 +12,7 @@
  *   the terms of the LGPL v3 license. See the LICENSE file for details.
  **/
 
-#include <MqttBrokerSettingsService.h>
+#include <service/MqttBrokerSettingsService.h>
 
 MqttBrokerSettingsService::MqttBrokerSettingsService(PsychicHttpServer *server, ESP32SvelteKit *sveltekit) : _httpEndpoint(MqttBrokerSettings::read,
                                                                                                                            MqttBrokerSettings::update,

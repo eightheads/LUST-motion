@@ -12,8 +12,8 @@
 #include <ESP32SvelteKit.h>
 #include <HttpEndpoint.h>
 #include <StrokeEngine.h>
-#include <SafeStateService.h>
-#include <HeartbeatWatchdog.h>
+#include <service/SafeStateService.h>
+#include <watchdog/HeartbeatWatchdog.h>
 #include <EventSocket.h>
 
 #ifndef MOTION_FACTORY_EASE_IN_SPEED

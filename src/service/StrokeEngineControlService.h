@@ -19,8 +19,8 @@
 #include <FSPersistence.h>
 #include <JsonUtils.h>
 #include <StrokeEngine.h>
-#include <MqttBrokerSettingsService.h>
-#include <HeartbeatWatchdog.h>
+#include <service/MqttBrokerSettingsService.h>
+#include <watchdog/HeartbeatWatchdog.h>
 
 #ifndef MOTION_FACTORY_TRAVEL
 #define MOTION_FACTORY_TRAVEL 150.0

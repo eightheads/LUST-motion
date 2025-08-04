@@ -14,9 +14,9 @@
 #include <PsychicMqttClient.h>
 #include <SecurityManager.h>
 #include <StrokeEngine.h>
-#include <MotorConfigurationService.h>
-#include <StrokeEngineSafetyService.h>
-#include <MqttBrokerSettingsService.h>
+#include <service/MotorConfigurationService.h>
+#include <service/StrokeEngineSafetyService.h>
+#include <service/MqttBrokerSettingsService.h>
 
 #ifndef BOARD_MAX_AMPERE
 #define BOARD_MAX_AMPERE 5.0

@@ -13,8 +13,8 @@
 #include <HttpEndpoint.h>
 #include <EventEndpoint.h>
 #include <StrokeEngine.h>
-#include <MqttBrokerSettingsService.h>
-#include <HeartbeatWatchdog.h>
+#include <service/MqttBrokerSettingsService.h>
+#include <watchdog/HeartbeatWatchdog.h>
 #include <ESP32SvelteKit.h>
 
 #define SAFE_STATE_ENDPOINT_PATH "/rest/safestate"
