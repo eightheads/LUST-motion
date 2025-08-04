@@ -22,13 +22,6 @@
 #include <MqttBrokerSettingsService.h>
 #include <HeartbeatWatchdog.h>
 
-#ifdef MOTOR_BOARD_H
-#include MOTOR_BOARD_H
-// else throw compile error
-#else
-#error "No board defined"
-#endif
-
 #ifndef MOTION_FACTORY_TRAVEL
 #define MOTION_FACTORY_TRAVEL 150.0
 #endif
