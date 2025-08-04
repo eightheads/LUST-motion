@@ -139,6 +139,13 @@ typedef std::function<void(bool safestate)> StrokeEngineSafeStateCallback;
 class StrokeEngine
 {
 public:
+    static Pattern *patternTable;
+    static const u8_t patternTableSize;
+    static void registerPatterns(Pattern *patternTable, u8_t patternCount) {
+        StrokeEngine::patternTable = patternTable;
+        StrokeEngine::patternTableSize = patternCount;
+    }
+
     /**************************************************************************/
     /*!
       @brief  Attach a motor driver to StrokeEngine. The motor driver must
