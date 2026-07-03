@@ -1,3 +1,3 @@
 # LUST-motion
 
-Wait for it
+Potential further dev for LUST-motion.
